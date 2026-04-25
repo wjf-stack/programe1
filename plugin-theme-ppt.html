@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>智联微记·插件主题动态PPT</title>
+<style>
+:root{--b:#2f6bff;--b2:#1846bd;--w:#fff;--g:#f4f7fc;--t:#10203f;--m:#5f6f8f;--l:#dbe4f5}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:radial-gradient(circle at 15% 15%,#fff,#edf3ff 45%,#e8eefb);color:var(--t);overflow:hidden}
+.deck{height:100%;display:grid;place-items:center;padding:20px}.slide{position:absolute;width:min(1160px,94vw);height:min(660px,90vh);background:linear-gradient(#fff,#f9fbff);border:1px solid var(--l);border-radius:20px;box-shadow:0 18px 50px rgba(32,70,150,.16);padding:28px 34px;opacity:0;transform:translateX(60px) scale(.98);pointer-events:none;transition:.55s}
+.slide.active{opacity:1;transform:none;pointer-events:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.brand{display:flex;gap:10px;align-items:center;font-weight:700;color:var(--b2)}.dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--b),#79a6ff);box-shadow:0 0 0 6px rgba(47,107,255,.12);animation:p 2s infinite}.tag{font-size:12px;color:var(--m);padding:5px 10px;border:1px solid #dbe5ff;border-radius:999px;background:#f0f4ff}
+h1,h2,h3,p{margin:0}.title{font-size:42px;line-height:1.16}.sub{margin-top:12px;color:var(--m);line-height:1.7}.grid{display:grid;gap:14px}.g2{grid-template-columns:1fr 1fr}.panel{background:#fff;border:1px solid var(--l);border-radius:14px;padding:14px}.list{display:grid;gap:9px;margin-top:10px}.it{border:1px solid var(--l);background:#fff;border-radius:11px;padding:10px 12px;opacity:0;transform:translateY(16px);animation:r .5s forwards}.it:nth-child(2){animation-delay:.08s}.it:nth-child(3){animation-delay:.16s}.it:nth-child(4){animation-delay:.24s}.it b{color:#173983}.it span{color:var(--m);font-size:14px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;height:calc(100% - 64px)}.mock{height:420px;border:1px solid #d8e4ff;background:linear-gradient(#f8fbff,#edf3ff);border-radius:16px;padding:16px;display:grid;gap:10px;align-content:start}.btn{height:46px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:700;background:linear-gradient(135deg,#4a79ff,#6a5dff);animation:f 3s infinite}.btn:nth-child(3){animation-delay:.2s}.btn:nth-child(4){animation-delay:.4s}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.k{border:1px solid var(--l);border-radius:11px;padding:10px}.k .n{font-size:26px;font-weight:800;color:var(--b2)}.k .l{color:var(--m);font-size:12px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}.node{border:1px solid #d5e2ff;border-radius:12px;padding:10px;background:#fff;position:relative}.node:after{content:"";position:absolute;right:-6px;top:50%;width:10px;height:2px;background:#8eaaf7;transform:translateY(-50%)}.node:last-child:after{display:none}.node h3{font-size:15px;color:#123074;margin-bottom:4px}.node p{font-size:12px;color:var(--m);line-height:1.5}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.shot{min-height:150px;border:1px dashed #b6c8f4;border-radius:12px;background:linear-gradient(#f6f9ff,#edf2ff);display:grid;place-items:center;color:#6d7ea0;font-size:13px;text-align:center;padding:8px}
+.foot{position:absolute;left:34px;right:34px;bottom:14px;display:flex;justify-content:space-between;align-items:center;color:#61749d;font-size:12px}.pro{width:210px;height:8px;background:#e7edfb;border-radius:99px;overflow:hidden}.pro i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--b),#7ca7ff);transition:.4s}
+.ctrl{position:fixed;right:18px;bottom:16px;display:flex;gap:8px}.ctrl button{border:1px solid #cfe0ff;background:#fff;color:#204086;border-radius:10px;padding:8px 12px;cursor:pointer;font-weight:600}
+@keyframes r{to{opacity:1;transform:none}}@keyframes p{50%{transform:scale(1.12)}}@keyframes f{50%{transform:translateY(-4px)}}
+</style>
+</head>
+<body>
+<div class="deck">
+<section class="slide active">
+<div class="top"><div class="brand"><i class="dot"></i>智联微记 · 网页插件主题汇报</div><div class="tag">简约科技风</div></div>
+<div class="hero">
+<div><h1 class="title">让网页信息快速沉淀为可复用知识</h1><p class="sub">基于“浏览器插件 + Web 应用 + 知识图谱”闭环，实现采集、分类、关联与复盘，适配课程汇报、项目答辩与产品展示。</p>
+<div class="kpis"><div class="k"><div class="n">3端</div><div class="l">插件/前端/后端</div></div><div class="k"><div class="n">4步</div><div class="l">采集→整理→关联→复用</div></div><div class="k"><div class="n">3层</div><div class="l">主题→分支→知识点</div></div></div></div>
+<div class="mock"><b style="color:#2d4f9f">插件面板（示意）</b><div class="btn">开始截图摘录</div><div class="btn">打开知识图谱</div><div class="btn">打开仪表盘</div><div class="panel"><small style="color:#678">支持主题+分支必填、保存反馈、关联推荐</small></div></div>
+</div><div class="foot"><span>封面 / 项目总览</span><div class="pro"><i></i></div></div>
+</section>
+
+<section class="slide">
+<div class="top"><div class="brand"><i class="dot"></i>核心功能矩阵</div><div class="tag">Core Features</div></div>
+<h2 style="font-size:32px;color:#12306e">插件能力与系统价值</h2>
+<div class="grid g2" style="margin-top:14px">
+<div class="panel"><h3 style="color:#1b3f8f">插件侧能力</h3><div class="list">
+<div class="it"><b>截图选区摘录</b><br><span>任意网页拖拽选区，一键生成摘录素材</span></div>
+<div class="it"><b>主题/分支结构化</b><br><span>采集即分类，降低后续整理成本</span></div>
+<div class="it"><b>保存状态反馈</b><br><span>保存中、成功、失败提示清晰</span></div>
+<div class="it"><b>一键跳转</b><br><span>快速打开图谱与仪表盘</span></div></div></div>
+<div class="panel"><h3 style="color:#1b3f8f">Web端能力</h3><div class="list">
+<div class="it"><b>仪表盘管理</b><br><span>笔记查看、编辑、删除、检索</span></div>
+<div class="it"><b>笔记编辑增强</b><br><span>支持图片粘贴上传与标签维护</span></div>
+<div class="it"><b>3D知识图谱</b><br><span>多星系分簇，主题/分支筛选聚焦</span></div>
+<div class="it"><b>关联探索</b><br><span>展开关联节点形成知识网络</span></div></div></div>
+</div><div class="foot"><span>功能总览</span><div class="pro"><i></i></div></div>
+</section>
+
+<section class="slide">
+<div class="top"><div class="brand"><i class="dot"></i>操作流程演示</div><div class="tag">User Journey</div></div>
+<h2 style="font-size:32px;color:#12306e">从“看到信息”到“知识沉淀”</h2>
+<div class="flow">
+<div class="node"><h3>01 启动插件</h3><p>登录后点击“开始截图摘录”。</p></div>
+<div class="node"><h3>02 结构化录入</h3><p>填写主题与分支，保存笔记。</p></div>
+<div class="node"><h3>03 管理检索</h3><p>在仪表盘统一维护内容。</p></div>
+<div class="node"><h3>04 图谱复盘</h3><p>按主题/分支聚焦知识关系。</p></div>
+</div>
+<div class="shots"><div class="shot">放图：插件弹窗截图</div><div class="shot">放图：摘录浮层截图</div><div class="shot">放图：图谱筛选截图</div></div>
+<div class="foot"><span>流程页</span><div class="pro"><i></i></div></div>
+</section>
+
+<section class="slide">
+<div class="top"><div class="brand"><i class="dot"></i>技术架构</div><div class="tag">Architecture</div></div>
+<h2 style="font-size:32px;color:#12306e">插件 + 前后端 + 图谱引擎协同</h2>
+<div class="grid g2" style="margin-top:12px">
+<div class="panel"><h3 style="color:#1b3f8f">技术栈</h3><div class="list">
+<div class="it"><b>前端：</b><span>Vue3 + Vite + Pinia + Router</span></div>
+<div class="it"><b>后端：</b><span>Node.js + Express + LowDB + JWT</span></div>
+<div class="it"><b>扩展：</b><span>Manifest V3 + Content/Popup/SW</span></div>
+<div class="it"><b>可视化：</b><span>Three.js + GLTFLoader</span></div></div></div>
+<div class="panel"><h3 style="color:#1b3f8f">设计亮点</h3><div class="list">
+<div class="it"><b>跨端闭环</b><br><span>采集、存储、管理、可视化一体化</span></div>
+<div class="it"><b>结构化维度</b><br><span>主题 + 分支 + 标签多维组织</span></div>
+<div class="it"><b>图谱层级</b><br><span>多星系分簇 + 同分支聚焦</span></div>
+<div class="it"><b>可维护性</b><br><span>模块清晰，便于二次扩展</span></div></div></div>
+</div><div class="foot"><span>架构页</span><div class="pro"><i></i></div></div>
+</section>
+
+<section class="slide">
+<div class="top"><div class="brand"><i class="dot"></i>价值与总结</div><div class="tag">Conclusion</div></div>
+<h2 style="font-size:32px;color:#12306e">美观 + 实用，适配正式展示</h2>
+<div class="grid g2" style="margin-top:14px">
+<div class="panel"><h3 style="color:#1b3f8f">应用价值</h3><div class="list">
+<div class="it"><b>学习场景</b><br><span>网页信息高效沉淀，提升复盘效率</span></div>
+<div class="it"><b>课程汇报</b><br><span>插件演示 + 图谱展示，表达更直观</span></div>
+<div class="it"><b>产品介绍</b><br><span>问题-方案-落地-效果链路完整</span></div></div></div>
+<div class="panel"><h3 style="color:#1b3f8f">后续规划</h3><div class="list">
+<div class="it"><b>智能推荐</b><br><span>语义相似知识自动推荐</span></div>
+<div class="it"><b>多人协作</b><br><span>主题共享与权限管理</span></div>
+<div class="it"><b>多端同步</b><br><span>桌面端与移动端统一体验</span></div></div></div>
+</div>
+<p class="sub" style="margin-top:12px">播放提示：按 <b>←/→</b> 翻页，按 <b>F</b> 全屏。第3页可替换真实截图用于答辩展示。</p>
+<div class="foot"><span>结束页 / Q&A</span><div class="pro"><i></i></div></div>
+</section>
+</div>
+<div class="ctrl"><button id="prev">上一页</button><button id="next">下一页</button></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')],bars=[...document.querySelectorAll('.pro i')];let i=0;
+function render(){slides.forEach((s,n)=>s.classList.toggle('active',n===i));const p=((i+1)/slides.length*100)+'%';bars.forEach(b=>b.style.width=p)}
+function next(){i=(i+1)%slides.length;render()} function prev(){i=(i-1+slides.length)%slides.length;render()}
+document.getElementById('next').onclick=next;document.getElementById('prev').onclick=prev;
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')next();if(e.key==='ArrowLeft'||e.key==='PageUp')prev();if(e.key.toLowerCase()==='f'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}});
+render();
+</script>
+</body>
+</html>

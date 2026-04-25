@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>智联微记</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { width: 280px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #fff; }
+    .header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header h1 { font-size: 16px; font-weight: 700; }
+    .header p  { font-size: 11px; opacity: 0.85; margin-top: 2px; }
+    .body { padding: 16px; }
+    .user-info { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding: 10px; background: #f8f8ff; border-radius: 8px; border: 1px solid #ebebff; }
+    .avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg,#667eea,#764ba2); color: white; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .user-name { font-size: 13px; font-weight: 600; color: #333; }
+    .user-email { font-size: 11px; color: #999; margin-top: 1px; }
+    .btn-capture {
+      width: 100%;
+      padding: 11px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 8px;
+      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-capture:hover { opacity: 0.9; }
+    .btn-capture .icon { font-size: 16px; }
+    .btn-secondary {
+      width: 100%;
+      padding: 9px;
+      background: #f0f0ff;
+      color: #667eea;
+      border: 1px solid #c5ceff;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 6px;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: #667eea; color: white; }
+    .btn-logout {
+      width: 100%;
+      padding: 7px;
+      background: #fff0f0;
+      color: #e53935;
+      border: 1px solid #ffcdd2;
+      border-radius: 8px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    .btn-logout:hover { background: #e53935; color: white; }
+    .login-section h2 { font-size: 14px; color: #333; margin-bottom: 12px; }
+    .input-field {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 12px;
+      outline: none;
+      margin-bottom: 8px;
+      transition: border 0.2s;
+    }
+    .input-field:focus { border-color: #667eea; }
+    .btn-login {
+      width: 100%;
+      padding: 9px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .error { color: #e53935; font-size: 11px; margin-top: 6px; }
+    .tip { font-size: 11px; color: #aaa; text-align: center; margin-top: 10px; line-height: 1.5; }
+    #login-view, #main-view { display: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <h1>智联微记</h1>
+      <p>知识摘录 · 关联图谱</p>
+    </div>
+  </div>
+  <div class="body">
+    <div id="login-view">
+      <div class="login-section">
+        <h2>登录你的账户</h2>
+        <input id="email" class="input-field" type="email" placeholder="邮箱" />
+        <input id="password" class="input-field" type="password" placeholder="密码" />
+        <button id="login-btn" class="btn-login">登录</button>
+        <div id="login-error" class="error"></div>
+        <p class="tip">请先在 <a href="http://localhost:5173/register" target="_blank">智联微记</a> 注册账号</p>
+      </div>
+    </div>
+    <div id="main-view">
+      <div class="user-info">
+        <div class="avatar" id="user-avatar">U</div>
+        <div>
+          <div class="user-name" id="user-name">用户</div>
+          <div class="user-email" id="user-email"></div>
+        </div>
+      </div>
+      <button id="capture-btn" class="btn-capture">
+        <span class="icon">✂</span>
+        <span>开始截图摘录</span>
+      </button>
+      <button id="graph-btn" class="btn-secondary">打开知识图谱</button>
+      <button id="dashboard-btn" class="btn-secondary">打开仪表板</button>
+      <button id="logout-btn" class="btn-logout">退出登录</button>
+      <p id="capture-hint" class="tip">点击「开始截图摘录」后<br>鼠标变为十字，拖拽选取区域</p>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

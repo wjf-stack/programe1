@@ -1,0 +1,238 @@
+{
+  "users": [
+    {
+      "id": "a32f1bc4-d730-423e-8d36-01ebb290d770",
+      "name": "testuser",
+      "email": "test@test.com",
+      "password": "$2a$10$gTkSUf3a8jc/b5rw53GV3ubxZGaf8WWDH4ujC7B6gPjbiyxJG9QuC",
+      "createdAt": "2026-03-30T14:45:14.358Z"
+    },
+    {
+      "id": "84c135be-d75c-4839-8687-1c6bfb6ee663",
+      "name": "wjf",
+      "email": "123456@qq.com",
+      "password": "$2a$10$tNZSbWuVXjaOffpeg0O4b.u0KO3Lwp0nm/LCdPamgwe4MiDKPkyDy",
+      "createdAt": "2026-03-30T14:54:45.383Z"
+    },
+    {
+      "id": "5fd54c49-22a4-4b4c-8564-4f024e35af3c",
+      "name": "auto-user",
+      "email": "auto_1774963689411@test.com",
+      "password": "$2a$10$8mt4YFuKg8G3QhmADlsIjeYcFpZTL39s5NhmCT5YZa4rLNA428eG.",
+      "createdAt": "2026-03-31T13:28:09.524Z"
+    },
+    {
+      "id": "30e2e700-6b8e-4bfb-88a1-f2eaeb58507e",
+      "name": "auto-user",
+      "email": "auto_1774963946979@test.com",
+      "password": "$2a$10$CFMW5RkYrYKuo8sc8S82dOXsc52OBgcmJCQtguvVXxDKGPLe1Y4C6",
+      "createdAt": "2026-03-31T13:32:27.041Z"
+    },
+    {
+      "id": "9187848b-0a40-458c-9b7d-c331d2785f3f",
+      "name": "QA用户",
+      "email": "qa_1775020155562@test.com",
+      "password": "$2a$10$PxBMJz.gZQ7cdzPdpIvScuX3mSlPjKXuk659xqnxfvhJFc14HhOqe",
+      "createdAt": "2026-04-01T05:09:15.650Z"
+    },
+    {
+      "id": "e2738684-da6c-4cb1-a702-24b820c435b9",
+      "name": "QA用户",
+      "email": "qa_1775042207938@test.com",
+      "password": "$2a$10$wu50t5U.VaGS.l1aAEENMuxscocyUT0v.UtdoLnPin2W8Pc1xcdkm",
+      "createdAt": "2026-04-01T11:16:48.029Z"
+    },
+    {
+      "id": "c8251c33-7a06-4ae1-8123-4a1a201b16b0",
+      "name": "QA用户",
+      "email": "qa_1775048559422@test.com",
+      "password": "$2a$10$v37Aj1shPv4OXEjTm8TwzewU99k2hh58gwbqdYW4U6IoP6NxpxwAu",
+      "createdAt": "2026-04-01T13:02:39.512Z"
+    },
+    {
+      "id": "56c4f9ed-8ba1-4a61-a10a-8cc4bc943a18",
+      "name": "QA用户",
+      "email": "qa_1775050417367@test.com",
+      "password": "$2a$10$aO6aztLjseOtqJC2c5ZwbuXZWcPVLvh.FuvAp2/jWheL3pduFQq5i",
+      "createdAt": "2026-04-01T13:33:37.447Z"
+    },
+    {
+      "id": "df5949fb-5ef9-4662-bf2c-2110cadf0dc5",
+      "name": "QA用户",
+      "email": "qa_1775051304744@test.com",
+      "password": "$2a$10$9TeJsvtJmFE3pEDS67OCvewRAEutZNqSl/x9W5ZnmJbu85OTo.N7u",
+      "createdAt": "2026-04-01T13:48:24.916Z"
+    }
+  ],
+  "notes": [
+    {
+      "id": "2ad23565-c57c-4e5a-82c7-300aa17385e6",
+      "title": "测试网页摘录知识点",
+      "content": "这是一段用于自动化测试的内容，包含宇宙、知识图谱、网页摘录、关联。",
+      "type": "clip",
+      "source": "https://example.com",
+      "userId": "5fd54c49-22a4-4b4c-8564-4f024e35af3c",
+      "createdAt": "2026-03-31T13:28:09.601Z",
+      "updatedAt": "2026-03-31T13:28:09.601Z"
+    },
+    {
+      "id": "9b520395-f8d4-46f0-baec-4b36e05fc4f9",
+      "title": "宇宙知识",
+      "content": "这是一条测试\n\n![截图](http://127.0.0.1:3000/uploads/demo.png)\n\n来源: http://localhost:5173/dashboard",
+      "type": "clip",
+      "source": null,
+      "userId": "9187848b-0a40-458c-9b7d-c331d2785f3f",
+      "createdAt": "2026-04-01T05:09:15.665Z",
+      "updatedAt": "2026-04-01T05:09:15.665Z"
+    },
+    {
+      "id": "240014c0-9d15-42da-af5b-d303d64ec577",
+      "title": "宇宙知识",
+      "content": "这是一条测试\n\n![截图](http://127.0.0.1:3000/uploads/demo.png)\n\n来源: http://localhost:5173/dashboard",
+      "type": "clip",
+      "source": null,
+      "userId": "e2738684-da6c-4cb1-a702-24b820c435b9",
+      "createdAt": "2026-04-01T11:16:48.047Z",
+      "updatedAt": "2026-04-01T11:16:48.047Z"
+    },
+    {
+      "id": "624ed1e7-2c2d-4f3e-97e7-3ee0e0d6d5ed",
+      "title": "宇宙知识",
+      "content": "这是一条测试\n\n![截图](http://127.0.0.1:3000/uploads/demo.png)\n\n来源: http://localhost:5173/dashboard",
+      "type": "clip",
+      "source": null,
+      "userId": "c8251c33-7a06-4ae1-8123-4a1a201b16b0",
+      "createdAt": "2026-04-01T13:02:39.534Z",
+      "updatedAt": "2026-04-01T13:02:39.534Z"
+    },
+    {
+      "id": "d45fffe6-b8b8-4bac-9ffe-f7cf553241cf",
+      "title": "宇宙知识",
+      "content": "这是一条测试\n\n![截图](http://127.0.0.1:3000/uploads/demo.png)\n\n来源: http://localhost:5173/dashboard",
+      "type": "clip",
+      "source": null,
+      "userId": "56c4f9ed-8ba1-4a61-a10a-8cc4bc943a18",
+      "createdAt": "2026-04-01T13:33:37.461Z",
+      "updatedAt": "2026-04-01T13:33:37.461Z"
+    },
+    {
+      "id": "b9878f12-9dce-432b-8465-5738d3830ef8",
+      "title": "宇宙知识",
+      "content": "这是一条测试\n\n![截图](http://127.0.0.1:3000/uploads/demo.png)\n\n来源: http://localhost:5173/dashboard",
+      "type": "clip",
+      "source": null,
+      "userId": "df5949fb-5ef9-4662-bf2c-2110cadf0dc5",
+      "createdAt": "2026-04-01T13:48:24.938Z",
+      "updatedAt": "2026-04-01T13:48:24.938Z"
+    },
+    {
+      "id": "d35e8b35-bf83-41ac-8a46-da508917ff38",
+      "title": "资料",
+      "content": "![截图](http://localhost:3000/uploads/1775053627118_ttfdtjq5nz9.png)\n\n来源：https://www.baidu.com/s?wd=%E5%A4%B4%E5%93%A5%E6%95%99%E5%AD%A6%E5%AE%9E%E8%B7%B5%E5%B9%B3%E5%8F%B0&usm=2&ie=utf-8&base_query=%E5%A4%B4%E5%93%A5&tag_key=%E6%95%99%E5%AD%A6%E5%AE%9E%E8%B7%B5%E5%B9%B3%E5%8F%B0&rsv_dl=re_dl_tag_2&rsv_pq=fa9596db009ac61a&oq=%E5%A4%B4%E5%93%A5&rsv_t=076ebVS%2BfOJbuqzKTEXvJqxJCZkQw6vejoNwSGKl8%2FUtHmeF5%2B%2BVr6Owpjk\n分支：语法",
+      "type": "clip",
+      "source": "https://www.baidu.com/s?wd=%E5%A4%B4%E5%93%A5%E6%95%99%E5%AD%A6%E5%AE%9E%E8%B7%B5%E5%B9%B3%E5%8F%B0&usm=2&ie=utf-8&base_query=%E5%A4%B4%E5%93%A5&tag_key=%E6%95%99%E5%AD%A6%E5%AE%9E%E8%B7%B5%E5%B9%B3%E5%8F%B0&rsv_dl=re_dl_tag_2&rsv_pq=fa9596db009ac61a&oq=%E5%A4%B4%E5%93%A5&rsv_t=076ebVS%2BfOJbuqzKTEXvJqxJCZkQw6vejoNwSGKl8%2FUtHmeF5%2B%2BVr6Owpjk",
+      "userId": "84c135be-d75c-4839-8687-1c6bfb6ee663",
+      "createdAt": "2026-04-01T14:27:07.138Z",
+      "updatedAt": "2026-04-01T14:27:07.138Z"
+    },
+    {
+      "id": "0f04f4eb-3071-4e6f-b8a0-9acfb7c9e9e0",
+      "title": "网页",
+      "content": "![截图](http://localhost:3000/uploads/1775053829617_1ot87txo0w7.png)\n\n来源：https://www.baidu.com/s?wd=%E5%A4%B4%E5%93%A5%E6%95%99%E5%AD%A6%E5%AE%9E%E8%B7%B5%E5%B9%B3%E5%8F%B0&usm=2&ie=utf-8&base_query=%E5%A4%B4%E5%93%A5&tag_key=%E6%95%99%E5%AD%A6%E5%AE%9E%E8%B7%B5%E5%B9%B3%E5%8F%B0&rsv_dl=re_dl_tag_2&rsv_pq=fa9596db009ac61a&oq=%E5%A4%B4%E5%93%A5&rsv_t=076ebVS%2BfOJbuqzKTEXvJqxJCZkQw6vejoNwSGKl8%2FUtHmeF5%2B%2BVr6Owpjk\n分支：头哥",
+      "type": "clip",
+      "source": "https://www.baidu.com/s?wd=%E5%A4%B4%E5%93%A5%E6%95%99%E5%AD%A6%E5%AE%9E%E8%B7%B5%E5%B9%B3%E5%8F%B0&usm=2&ie=utf-8&base_query=%E5%A4%B4%E5%93%A5&tag_key=%E6%95%99%E5%AD%A6%E5%AE%9E%E8%B7%B5%E5%B9%B3%E5%8F%B0&rsv_dl=re_dl_tag_2&rsv_pq=fa9596db009ac61a&oq=%E5%A4%B4%E5%93%A5&rsv_t=076ebVS%2BfOJbuqzKTEXvJqxJCZkQw6vejoNwSGKl8%2FUtHmeF5%2B%2BVr6Owpjk",
+      "userId": "84c135be-d75c-4839-8687-1c6bfb6ee663",
+      "createdAt": "2026-04-01T14:30:29.633Z",
+      "updatedAt": "2026-04-01T14:30:29.633Z"
+    },
+    {
+      "id": "de1a1c9b-6347-44e3-8163-e099ff4fee08",
+      "title": "资料",
+      "content": "![截图](http://localhost:3000/uploads/1775734541938_zcw7kbcb6l.png)\n\n来源：https://www.baidu.com/s?ie=UTF-8&wd=%E5%A4%B4%E5%93%A5\n分支：语法",
+      "type": "clip",
+      "source": "https://www.baidu.com/s?ie=UTF-8&wd=%E5%A4%B4%E5%93%A5",
+      "branch": "语法",
+      "userId": "84c135be-d75c-4839-8687-1c6bfb6ee663",
+      "createdAt": "2026-04-09T11:35:41.962Z",
+      "updatedAt": "2026-04-09T11:35:41.962Z"
+    },
+    {
+      "id": "f185d7a9-ebe3-4781-9bd5-f4902ee24280",
+      "title": "1",
+      "content": "![截图](http://localhost:3000/uploads/1775734894002_yjxgsq1fxrr.png)\n\n来源：https://www.baidu.com/s?ie=UTF-8&wd=%E5%A4%B4%E5%93%A5\n分支：123",
+      "type": "clip",
+      "source": "https://www.baidu.com/s?ie=UTF-8&wd=%E5%A4%B4%E5%93%A5",
+      "branch": "123",
+      "userId": "84c135be-d75c-4839-8687-1c6bfb6ee663",
+      "createdAt": "2026-04-09T11:41:34.018Z",
+      "updatedAt": "2026-04-09T11:41:34.018Z"
+    }
+  ],
+  "tags": [
+    {
+      "id": "773476f7-1c89-4b46-827a-15f70524d515",
+      "name": "test-tag",
+      "userId": "a32f1bc4-d730-423e-8d36-01ebb290d770",
+      "createdAt": "2026-03-30T14:45:59.119Z"
+    },
+    {
+      "id": "0911d282-d5e9-4489-a6e3-8a213ab7b45b",
+      "name": "宇宙",
+      "userId": "5fd54c49-22a4-4b4c-8564-4f024e35af3c",
+      "createdAt": "2026-03-31T13:28:09.596Z"
+    },
+    {
+      "id": "66dda846-2f9d-43aa-b1ca-c37b5504c7f7",
+      "name": "宇宙",
+      "userId": "30e2e700-6b8e-4bfb-88a1-f2eaeb58507e",
+      "createdAt": "2026-03-31T13:32:27.115Z"
+    },
+    {
+      "id": "4b7710b7-9e33-46c5-9b5c-a295484b4d73",
+      "name": "头哥",
+      "userId": "84c135be-d75c-4839-8687-1c6bfb6ee663",
+      "createdAt": "2026-04-01T14:27:07.128Z"
+    },
+    {
+      "id": "f90c14e1-b362-4077-ae93-069d0787fd85",
+      "name": "资料库",
+      "userId": "84c135be-d75c-4839-8687-1c6bfb6ee663",
+      "createdAt": "2026-04-01T14:30:29.625Z"
+    },
+    {
+      "id": "ffac8eda-0590-4140-8ac3-08c64ef9be74",
+      "name": "网页",
+      "userId": "84c135be-d75c-4839-8687-1c6bfb6ee663",
+      "createdAt": "2026-04-09T11:37:56.289Z"
+    },
+    {
+      "id": "9dbf6d32-5895-4fd4-852f-925343ec8f4d",
+      "name": "12",
+      "userId": "84c135be-d75c-4839-8687-1c6bfb6ee663",
+      "createdAt": "2026-04-09T11:41:34.010Z"
+    }
+  ],
+  "noteTags": [
+    {
+      "noteId": "2ad23565-c57c-4e5a-82c7-300aa17385e6",
+      "tagId": "0911d282-d5e9-4489-a6e3-8a213ab7b45b"
+    },
+    {
+      "noteId": "d35e8b35-bf83-41ac-8a46-da508917ff38",
+      "tagId": "4b7710b7-9e33-46c5-9b5c-a295484b4d73"
+    },
+    {
+      "noteId": "0f04f4eb-3071-4e6f-b8a0-9acfb7c9e9e0",
+      "tagId": "f90c14e1-b362-4077-ae93-069d0787fd85"
+    },
+    {
+      "noteId": "de1a1c9b-6347-44e3-8163-e099ff4fee08",
+      "tagId": "4b7710b7-9e33-46c5-9b5c-a295484b4d73"
+    },
+    {
+      "noteId": "f185d7a9-ebe3-4781-9bd5-f4902ee24280",
+      "tagId": "9dbf6d32-5895-4fd4-852f-925343ec8f4d"
+    }
+  ],
+  "relations": []
+}

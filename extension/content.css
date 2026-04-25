@@ -1,0 +1,211 @@
+#zlwj-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483645;
+  cursor: crosshair;
+  background: rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+#zlwj-selection {
+  position: absolute;
+  z-index: 2147483646;
+  border: 2px solid #667eea;
+  background: rgba(102, 126, 234, 0.12);
+  box-shadow: 0 0 0 2px rgba(102,126,234,0.3);
+  display: none;
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+#zlwj-menu {
+  position: absolute;
+  z-index: 2147483647;
+  width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(102,126,234,0.15);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  overflow: hidden;
+  animation: zlwj-pop 0.18s cubic-bezier(.34,1.56,.64,1);
+}
+
+@keyframes zlwj-pop {
+  from { opacity: 0; transform: scale(0.88) translateY(-8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.zlwj-menu-header {
+  position: relative;
+  background: #f8f8ff;
+  border-bottom: 1px solid #ebebff;
+  padding: 8px;
+}
+
+.zlwj-preview {
+  width: 100%;
+  max-height: 140px;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+}
+
+.zlwj-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.35);
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.zlwj-close::after { content: "x"; }
+
+.zlwj-menu-body {
+  padding: 12px;
+}
+
+.zlwj-input {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 12px;
+  outline: none;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  transition: border 0.2s;
+}
+.zlwj-input:focus { border-color: #667eea; box-shadow: 0 0 0 2px rgba(102,126,234,0.12); }
+
+.zlwj-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.zlwj-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.zlwj-btn {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.zlwj-btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+.zlwj-btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.zlwj-btn-secondary {
+  background: #f0f0ff;
+  color: #667eea;
+  border: 1px solid #c5ceff;
+}
+.zlwj-btn-secondary:hover { background: #667eea; color: white; }
+
+.zlwj-btn-graph {
+  background: #fff8e1;
+  color: #f59e0b;
+  border: 1px solid #fde68a;
+}
+.zlwj-btn-graph:hover { background: #f59e0b; color: white; }
+
+.zlwj-result {
+  border-top: 1px solid #f0f0ff;
+  padding-top: 10px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.zlwj-loading { color: #999; font-size: 12px; }
+.zlwj-error   { color: #e53935; font-size: 12px; }
+.zlwj-empty   { color: #bbb; font-size: 12px; }
+
+.zlwj-success {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #2e7d32;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.zlwj-link {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.zlwj-related-header {
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.zlwj-related-list {
+  list-style: none;
+  margin: 0 0 6px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zlwj-related-item {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ebebff;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: #f8f8ff;
+}
+.zlwj-related-item:hover { border-color: #667eea; background: #eef0ff; }
+
+.zlwj-related-title {
+  display: block;
+  color: #333;
+  font-weight: 500;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zlwj-related-tags {
+  display: block;
+  color: #aaa;
+  font-size: 11px;
+  margin-top: 2px;
+}
