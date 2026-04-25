@@ -18,6 +18,30 @@
       <div class="stat-card panel"><h3>知识节点</h3><p class="stat-value">{{ graphNodes.length }}</p></div>
     </div>
 
+    <div class="templates-section panel">
+      <div class="section-header">
+        <h3>示例笔记模板</h3>
+        <button class="btn-new ghost" @click="createAllTemplates" :disabled="creatingTemplates">
+          {{ creatingTemplates ? '生成中...' : '一键生成全部' }}
+        </button>
+      </div>
+      <p class="templates-tip">用于展示不同记录形式：快速笔记 / 富文本 / 网页摘录 / 图片粘贴示例。点击任意卡片可直接生成并打开。</p>
+      <div class="templates-grid">
+        <button
+          v-for="tpl in templates"
+          :key="tpl.key"
+          class="tpl-card"
+          @click="createFromTemplate(tpl)"
+        >
+          <div class="tpl-top">
+            <div class="tpl-badge">{{ tpl.badge }}</div>
+            <div class="tpl-title">{{ tpl.title }}</div>
+          </div>
+          <div class="tpl-desc">{{ tpl.desc }}</div>
+        </button>
+      </div>
+    </div>
+
     <div class="notes-section panel">
       <div class="section-header">
         <h3>最近笔记与操作</h3>
@@ -66,6 +90,7 @@ const noteStore = useNoteStore()
 const graphStore = useGraphStore()
 const searchKeyword = ref('')
 const selectedTag = ref(null)
+const creatingTemplates = ref(false)
 
 const notes = computed(() => noteStore.notes)
 const tags = computed(() => noteStore.tags)
@@ -82,6 +107,101 @@ onMounted(async () => {
   await noteStore.fetchTags()
   await graphStore.fetchGraphData()
 })
+
+const templates = computed(() => ([
+  {
+    key: 'quick',
+    badge: '快速笔记',
+    title: '一分钟抓住重点',
+    desc: '适合随手记录：一句结论 + 3 个要点 + TODO。',
+    payload: {
+      title: '快速笔记｜今日要点',
+      type: 'quick',
+      branch: '概念',
+      content: `一句话结论：\n\n- 要点1：\n- 要点2：\n- 要点3：\n\nTODO：\n- [ ] 把要点2扩展成案例`
+    }
+  },
+  {
+    key: 'rich',
+    badge: '富文本',
+    title: '结构化学习卡片',
+    desc: '适合讲清楚：背景 → 方法 → 示例 → 误区。',
+    payload: {
+      title: '学习卡片｜如何做知识整理',
+      type: 'rich',
+      branch: '方法',
+      content: `## 背景\n把碎片信息变成可检索、可复用的知识。\n\n## 方法\n1. 先写结论（30秒）\n2. 再写证据/例子（2分钟）\n3. 最后补一个反例/误区（1分钟）\n\n## 示例\n- 结论：用标签 + 分支让知识更可导航\n- 例子：同主题下按“概念/方法/案例”分支\n\n## 误区\n- 记录太长、没有结构\n- 只收藏不加工`
+    }
+  },
+  {
+    key: 'clip',
+    badge: '网页摘录',
+    title: '带来源的摘录记录',
+    desc: '适合从网页/资料中摘录关键段落并标注来源。',
+    payload: {
+      title: '网页摘录｜一段有用的引用',
+      type: 'clip',
+      branch: '资料',
+      source: 'https://example.com',
+      content: `> “记录不是目的，复用才是。”\n\n来源：https://example.com\n\n我的理解：\n- 记录要能被检索\n- 记录要能被连接（标签/关联）`
+    }
+  },
+  {
+    key: 'image',
+    badge: '图片示例',
+    title: '图片 + 说明',
+    desc: '展示图片插入的记录形式（演示版使用 base64）。',
+    payload: {
+      title: '图片记录｜截图说明示例',
+      type: 'clip',
+      branch: '案例',
+      content: `这里是图片示例（可在编辑页点击“插入图片”或 Ctrl+V 粘贴）。\n\n![示例图片](data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23667eea'/><stop offset='1' stop-color='%23764ba2'/></linearGradient></defs><rect width='640' height='360' fill='url(%23g)'/><text x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='34' fill='white'>Demo Image</text></svg>)\n\n说明：\n- 这张图用于展示“图片 + 文字说明”的记录样式。\n- 你可以替换成自己粘贴的截图。`
+    }
+  }
+]))
+
+const ensureTag = async (name) => {
+  if (!name) return null
+  try {
+    const list = await noteStore.fetchTags()
+    const existing = (list || []).find(t => t.name === name) || noteStore.tags.find(t => t.name === name)
+    if (existing) return existing
+  } catch {}
+  try {
+    const created = await noteStore.createTag(name)
+    return created
+  } catch {
+    return null
+  }
+}
+
+const createFromTemplate = async (tpl) => {
+  creatingTemplates.value = true
+  try {
+    const tag = await ensureTag('示例')
+    const note = await noteStore.createNote({
+      ...tpl.payload,
+      tagIds: tag ? [tag.id] : []
+    })
+    await noteStore.fetchNotes()
+    await graphStore.fetchGraphData()
+    router.push('/note/' + note.id)
+  } finally {
+    creatingTemplates.value = false
+  }
+}
+
+const createAllTemplates = async () => {
+  creatingTemplates.value = true
+  try {
+    for (const tpl of templates.value) {
+      // eslint-disable-next-line no-await-in-loop
+      await createFromTemplate(tpl)
+    }
+  } finally {
+    creatingTemplates.value = false
+  }
+}
 
 const handleSearch = async () => {
   if (!searchKeyword.value.trim()) {
@@ -125,10 +245,20 @@ const formatDate = (date) => date ? new Date(date).toLocaleDateString('zh-CN') :
 .stat-card { padding:1.2rem; border-radius:16px; text-align:center; }
 .stat-card h3 { color:#afbedf; font-size:.85rem; margin-bottom:.35rem; }
 .stat-value { font-size:2.3rem; font-weight:800; color:#eaf1ff; margin:0; }
-.notes-section,.tags-section { padding:1.3rem; border-radius:18px; margin-bottom:1.2rem; }
+.templates-section,.notes-section,.tags-section { padding:1.3rem; border-radius:18px; margin-bottom:1.2rem; }
 .section-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
 .section-header h3,.tags-section h3 { margin:0 0 1rem 0; color:#ecf2ff; font-size:1.05rem; }
 .btn-new { padding:.5rem 1.2rem; background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border-radius:10px; text-decoration:none; font-size:.9rem; }
+.btn-new.ghost { background: rgba(112,131,199,0.14); border: 1px solid rgba(149,170,255,0.16); cursor: pointer; }
+.btn-new.ghost:disabled { opacity: .6; cursor: not-allowed; }
+.templates-tip { margin: -0.3rem 0 1rem; color:#adb9d6; font-size:.9rem; }
+.templates-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.9rem; }
+.tpl-card { text-align:left; background:rgba(7,13,30,.72); border:1px solid rgba(141,169,255,.14); border-radius:14px; padding:1rem; cursor:pointer; transition: transform .15s ease, border-color .15s ease, background .15s ease; }
+.tpl-card:hover { transform: translateY(-2px); border-color: rgba(141,169,255,.28); background:rgba(7,13,30,.82); }
+.tpl-top { display:flex; align-items:center; gap:.6rem; margin-bottom:.6rem; }
+.tpl-badge { font-size:.74rem; padding:.18rem .55rem; border-radius:999px; background:rgba(102,126,234,.22); color:#dce8ff; border:1px solid rgba(141,169,255,.16); }
+.tpl-title { font-weight:800; color:#eff4ff; }
+.tpl-desc { color:#b9c6e7; font-size:.86rem; line-height:1.45; }
 .loading,.empty-state { text-align:center; padding:2rem; color:#adb9d6; }
 .notes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:.9rem; }
 .note-card { background:rgba(7,13,30,.78); padding:1rem; border-radius:14px; cursor:pointer; border:1px solid rgba(141,169,255,.12); }
