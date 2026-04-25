@@ -79,12 +79,30 @@ const buildSeed = async () => {
 
 let dbCache = null
 
+export const resetMockDB = async () => {
+  dbCache = await buildSeed()
+  persistDB(dbCache)
+  return dbCache
+}
+
 const ensureDB = async () => {
   if (dbCache) return dbCache
   const local = localStorage.getItem(STORAGE_KEY)
   if (local) {
-    dbCache = JSON.parse(local)
-    return dbCache
+    try {
+      dbCache = JSON.parse(local)
+      const hasData = Array.isArray(dbCache?.notes) && dbCache.notes.length > 0
+      const hasUsers = Array.isArray(dbCache?.users) && dbCache.users.length > 0
+      if (!hasUsers || !hasData) {
+        dbCache = await buildSeed()
+        persistDB(dbCache)
+      }
+      return dbCache
+    } catch {
+      dbCache = await buildSeed()
+      persistDB(dbCache)
+      return dbCache
+    }
   }
   dbCache = await buildSeed()
   persistDB(dbCache)

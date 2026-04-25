@@ -21,9 +21,14 @@
     <div class="templates-section panel">
       <div class="section-header">
         <h3>示例笔记模板</h3>
-        <button class="btn-new ghost" @click="createAllTemplates" :disabled="creatingTemplates">
-          {{ creatingTemplates ? '生成中...' : '一键生成全部' }}
-        </button>
+        <div class="tpl-actions">
+          <button class="btn-new ghost" @click="createAllTemplates" :disabled="creatingTemplates">
+            {{ creatingTemplates ? '生成中...' : '一键生成全部' }}
+          </button>
+          <button class="btn-new ghost danger" @click="restoreDemoData" :disabled="creatingTemplates">
+            恢复演示数据
+          </button>
+        </div>
       </div>
       <p class="templates-tip">用于展示不同记录形式：快速笔记 / 富文本 / 网页摘录 / 图片粘贴示例。点击任意卡片可直接生成并打开。</p>
       <div class="templates-grid">
@@ -84,6 +89,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useNoteStore } from '../stores/note'
 import { useGraphStore } from '../stores/graph'
+import { resetDemoData } from '../api'
 
 const router = useRouter()
 const noteStore = useNoteStore()
@@ -106,6 +112,9 @@ onMounted(async () => {
   await noteStore.fetchNotes()
   await noteStore.fetchTags()
   await graphStore.fetchGraphData()
+  if (notes.value.length === 0) {
+    await createAllTemplates()
+  }
 })
 
 const templates = computed(() => ([
@@ -175,7 +184,8 @@ const ensureTag = async (name) => {
   }
 }
 
-const createFromTemplate = async (tpl) => {
+const createFromTemplate = async (tpl, options = {}) => {
+  const { navigate = true } = options
   creatingTemplates.value = true
   try {
     const tag = await ensureTag('示例')
@@ -185,7 +195,8 @@ const createFromTemplate = async (tpl) => {
     })
     await noteStore.fetchNotes()
     await graphStore.fetchGraphData()
-    router.push('/note/' + note.id)
+    if (navigate) router.push('/note/' + note.id)
+    return note
   } finally {
     creatingTemplates.value = false
   }
@@ -194,10 +205,29 @@ const createFromTemplate = async (tpl) => {
 const createAllTemplates = async () => {
   creatingTemplates.value = true
   try {
+    const tag = await ensureTag('示例')
     for (const tpl of templates.value) {
       // eslint-disable-next-line no-await-in-loop
-      await createFromTemplate(tpl)
+      await noteStore.createNote({
+        ...tpl.payload,
+        tagIds: tag ? [tag.id] : []
+      })
     }
+    await noteStore.fetchNotes()
+    await graphStore.fetchGraphData()
+  } finally {
+    creatingTemplates.value = false
+  }
+}
+
+const restoreDemoData = async () => {
+  if (!confirm('确定恢复演示数据吗？这会覆盖当前浏览器中的演示数据。')) return
+  creatingTemplates.value = true
+  try {
+    await resetDemoData()
+    await noteStore.fetchNotes()
+    await noteStore.fetchTags()
+    await graphStore.fetchGraphData()
   } finally {
     creatingTemplates.value = false
   }
@@ -251,6 +281,8 @@ const formatDate = (date) => date ? new Date(date).toLocaleDateString('zh-CN') :
 .btn-new { padding:.5rem 1.2rem; background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border-radius:10px; text-decoration:none; font-size:.9rem; }
 .btn-new.ghost { background: rgba(112,131,199,0.14); border: 1px solid rgba(149,170,255,0.16); cursor: pointer; }
 .btn-new.ghost:disabled { opacity: .6; cursor: not-allowed; }
+.btn-new.ghost.danger { border-color: rgba(255,118,148,.34); background: rgba(255,90,115,.16); color: #ffd9e2; }
+.tpl-actions { display:flex; gap:.6rem; flex-wrap:wrap; justify-content:flex-end; }
 .templates-tip { margin: -0.3rem 0 1rem; color:#adb9d6; font-size:.9rem; }
 .templates-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.9rem; }
 .tpl-card { text-align:left; background:rgba(7,13,30,.72); border:1px solid rgba(141,169,255,.14); border-radius:14px; padding:1rem; cursor:pointer; transition: transform .15s ease, border-color .15s ease, background .15s ease; }

@@ -4,7 +4,8 @@ import {
   noteAPI as mockNoteAPI,
   tagAPI as mockTagAPI,
   graphAPI as mockGraphAPI,
-  fileAPI as mockFileAPI
+  fileAPI as mockFileAPI,
+  resetMockDB
 } from './mock'
 
 const API_BASE = '/api'
@@ -88,4 +89,8 @@ if (useMock) {
 }
 
 export const isMockMode = useMock
+export const resetDemoData = async () => {
+  if (!useMock) return null
+  return await resetMockDB()
+}
 export default api
